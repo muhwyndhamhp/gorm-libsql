@@ -1,22 +1,21 @@
-package sqlite
+package libsql
 
 import (
 	"context"
 	"database/sql"
 	"strconv"
 
-	"gorm.io/gorm/callbacks"
-
-	_ "github.com/mattn/go-sqlite3"
+	_ "github.com/tursodatabase/libsql-client-go/libsql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/callbacks"
 	"gorm.io/gorm/clause"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/migrator"
 	"gorm.io/gorm/schema"
 )
 
-// DriverName is the default driver name for SQLite.
-const DriverName = "sqlite3"
+// DriverName is the default driver name for libSQL.
+const DriverName = "libsql"
 
 type Dialector struct {
 	DriverName string
@@ -29,7 +28,7 @@ func Open(dsn string) gorm.Dialector {
 }
 
 func (dialector Dialector) Name() string {
-	return "sqlite"
+	return "libsql"
 }
 
 func (dialector Dialector) Initialize(db *gorm.DB) (err error) {
@@ -96,7 +95,7 @@ func (dialector Dialector) ClauseBuilders() map[string]clause.ClauseBuilder {
 		},
 		"LIMIT": func(c clause.Clause, builder clause.Builder) {
 			if limit, ok := c.Expression.(clause.Limit); ok {
-				var lmt = -1
+				lmt := -1
 				if limit.Limit != nil && *limit.Limit >= 0 {
 					lmt = *limit.Limit
 				}

@@ -1,30 +1,20 @@
-# GORM Sqlite Driver
+# GORM libSQL Driver
 
 ![CI](https://github.com/go-gorm/sqlite/workflows/CI/badge.svg)
+
+**Note:** This is an experimental refactored copy of gorm.io/driver/sqlite
+to use libsql driver instead of smattn/go-sqlite3. Based on @ekristen repo.
 
 ## USAGE
 
 ```go
 import (
-  "gorm.io/driver/sqlite"
+  libsql "github.com/renxzen/gorm-libsql"
   "gorm.io/gorm"
 )
 
-// github.com/mattn/go-sqlite3
-db, err := gorm.Open(sqlite.Open("gorm.db"), &gorm.Config{})
+// github.com/tursodatabase/libsql-client-go
+db, err := gorm.Open(libsql.Open("libsql://..."), &gorm.Config{})
 ```
 
 Checkout [https://gorm.io](https://gorm.io) for details.
-
-### Pure go Sqlite Driver
-
-checkout [https://github.com/glebarez/sqlite](https://github.com/glebarez/sqlite) for details
-
-```go
-import (
-  "github.com/glebarez/sqlite"
-  "gorm.io/gorm"
-)
-
-db, err := gorm.Open(sqlite.Open("gorm.db"), &gorm.Config{})
-```
