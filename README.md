@@ -9,7 +9,7 @@ to use libsql driver instead of smattn/go-sqlite3. Based on @ekristen repo.
 
 ```go
 import (
-  libsql "github.com/renxzen/gorm-libsql"
+  libsql "github.com/muhwyndhamhp/gorm-libsql"
   "gorm.io/gorm"
 )
 

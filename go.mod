@@ -1,4 +1,4 @@
-module github.com/renxzen/gorm-libsql
+module github.com/muhwyndhamhp/gorm-libsql
 
 go 1.22
 
